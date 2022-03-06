@@ -1,6 +1,7 @@
 ﻿#region Using directives
 using Blazorise.RichTextEdit;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 #endregion
 
 namespace Blazorise.Demo
@@ -25,6 +26,7 @@ namespace Blazorise.Demo
             // register demo services to fetch test data
             services.AddScoped<Shared.Data.EmployeeData>();
             services.AddScoped<Shared.Data.CountryData>();
+            services.TryAddScoped<IDialogService, DialogService>();
 
             return services;
         }

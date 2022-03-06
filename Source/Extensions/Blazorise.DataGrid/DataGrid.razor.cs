@@ -280,6 +280,47 @@ namespace Blazorise.DataGrid
             return base.DisposeAsync( disposing );
         }
 
+        internal IDialogReference dialogReference;
+
+        private async Task OnCommandbarItemSelected( string id )
+        {
+            if ( id == "Filter" )
+            {
+                ShowFilter = !ShowFilter;
+                return;
+            }
+            else if ( id == "New" )
+            {
+                await New();
+                return;
+            }
+            else if ( id == "Edit" )
+            {
+                await Edit(SelectedRow);
+                return;
+            }
+            else if ( id == "Delete" )
+            {
+                var parameters = new Dictionary<string, object>();
+                dialogReference = DialogService.Show<DialogDelete>( parameters );
+
+                var result = await dialogReference.Result;
+
+                if ( result.Cancelled )
+                {
+                    return;
+                }
+
+                await Delete( SelectedRow);
+
+
+                return;
+            }
+
+            var args = new CommandEventArgs<TItem>( SelectedRow, id );
+            await CommandbarItemSelected.InvokeAsync( args );
+        }
+
         /// <summary>
         /// Tracks whether the user explicitly set SelectedRows to null or empty and makes sure SelectedRow is synced.
         /// </summary>
@@ -1593,6 +1634,8 @@ namespace Blazorise.DataGrid
             }
         }
 
+        internal bool ShowFilter = false;
+
         /// <summary>
         /// Specifies the behaviour of datagrid editing.
         /// </summary>
@@ -2063,6 +2106,20 @@ namespace Blazorise.DataGrid
         [Parameter( CaptureUnmatchedValues = true )]
         public Dictionary<string, object> Attributes { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter] public List<CommandBarItemModel> RowCommandBarItems { get; set; } = new();
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter] public List<object> CommandbarItems { get; set; } = new List<object> { };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter] public EventCallback<CommandEventArgs<TItem>> CommandbarItemSelected { get; set; }
         #endregion
     }
 }

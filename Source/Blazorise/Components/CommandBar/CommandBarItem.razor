@@ -1,21 +1,21 @@
 ﻿@namespace Blazorise
 @inherits BaseComponent
 
-<div class="d-flex m-2">
+<div class="d-flex m-2 commandbaritem">
 
     @if (!string.IsNullOrEmpty(PrefixIcon))
     {
-        <button type="submit" class="toolbar-btn" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
+        <button type="submit" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
             <span>
                 <i data-icon-name="@PrefixIcon" aria-hidden="true" class="@PrefixIcon" />
 
-                <span class="toolbar-title">@Title</span>
+                <span class="commandbaritem-title">@Title</span>
             </span>
         </button>
     }
     else
     {
-        <button type="submit" class="toolbar-btn" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
+        <button type="submit" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
             <span>
                 @switch (Title)
                 {
@@ -60,7 +60,7 @@
 
                         break;
                 }
-                <span class="toolbar-title">@Title</span>
+                <span class="commandbaritem-title">@Title</span>
             </span>
         </button>
     }

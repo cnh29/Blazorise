@@ -1,0 +1,10 @@
+﻿@namespace Blazorise
+@inherits BaseComponent
+@using Microsoft.AspNetCore.Components
+
+<CascadingValue Value="this" IsFixed="true">
+    @foreach (var dialog in _dialogs)
+    {
+        @dialog.RenderFragment
+    }
+</CascadingValue>

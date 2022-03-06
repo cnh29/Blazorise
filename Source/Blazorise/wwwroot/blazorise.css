@@ -2415,3 +2415,24 @@ span.flatpickr-weekday {
     flex-shrink: 0;
     align-items: stretch;
 }
+
+.commandbaritem-title {
+    padding-left: 3px;
+}
+
+.commandbaritem > button {
+    background-color: transparent;
+    border-style: none;
+}
+
+.commandbaritem > button:hover:disabled {
+    background-color: transparent;
+    border-style: none;
+}
+
+    .commandbaritem > button:hover:enabled {
+        background-color: var(--background-color);
+        border-style: none;
+        border-radius: 4px;
+        color: var(--primary-color);
+    } 
