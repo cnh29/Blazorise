@@ -1,0 +1,72 @@
+﻿@namespace Blazorise
+@inherits BaseComponent
+
+<div class="d-flex m-2">
+
+    @if (!string.IsNullOrEmpty(PrefixIcon))
+    {
+        <button type="submit" class="toolbar-btn" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
+            <span>
+                <i data-icon-name="@PrefixIcon" aria-hidden="true" class="@PrefixIcon" />
+
+                <span class="toolbar-title">@Title</span>
+            </span>
+        </button>
+    }
+    else
+    {
+        <button type="submit" class="toolbar-btn" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
+            <span>
+                @switch (Title)
+                {
+                    case "Add":
+                    case "New":
+                        <i class="bi-plus-lg" aria-hidden="true" />
+                        break;
+                    case "Cancel":
+                        <i class="bi-x-lg" aria-hidden="true" />
+                        break;
+                    case "Delete":
+                        <i class="bi-trash-fill" aria-hidden="true" />
+                        break;
+                    case "Update":
+                        <i class="bi-save-fill" aria-hidden="true" />
+                        break;
+                    case "Upload":
+                        <i class="bi-upload" aria-hidden="true" />
+                        break;
+                    case "Download":
+                        <i class="bi-download" aria-hidden="true" />
+                        break;
+                    case "Filter":
+                        <i class="bi-funnel" aria-hidden="true" />
+                        break;
+                    case "View":
+                        <i class="bi-file-earmark-fill" aria-hidden="true" />
+                        break;
+                    case "CSV":
+                        <i class="bi-file-excel-fill" aria-hidden="true" />
+                        break;
+                    case "PDF":
+                        <i class="bi-file-earmark-pdf-fill" aria-hidden="true" />
+                        break;
+                    case "Print":
+                        <i class="bi-printer-fill" aria-hidden="true" />
+                        break;
+                    case "Edit":
+                        <i class="bi-pencil" aria-hidden="true" />
+                        break;
+                    default:
+
+                        break;
+                }
+                <span class="toolbar-title">@Title</span>
+            </span>
+        </button>
+    }
+
+
+</div>
+
+
+

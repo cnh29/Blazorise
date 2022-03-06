@@ -1,0 +1,16 @@
+﻿@namespace Blazorise
+@inherits BaseComponent
+
+<div class="d-flex m-2" @onclick="OnClick">
+    <button type="button" class="toolbar-btn">
+        <span class="ms-Button-flexContainer flexContainer-209">
+
+            <span class="ms-Button-textContainer textContainer-210">
+                <span class="ms-Button-label label-565">@SelectedItems selected</span>
+            </span>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+        </span>
+    </button>
+</div>

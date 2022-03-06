@@ -21,6 +21,8 @@
     <EmbeddedResource Include="Resources\Localization\**\*.json" />
     <None Remove="Resources\Localization\*.json" />
     <EmbeddedResource Include="Resources\Localization\*.json" />
+    <None Remove="Components\CommandBar\" />
+    <None Remove="Components\SelectionButton\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,4 +34,8 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\CommandBar\" />
+    <Folder Include="Components\SelectionButton\" />
+  </ItemGroup>
 </Project>
