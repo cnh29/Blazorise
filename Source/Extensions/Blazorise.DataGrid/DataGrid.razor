@@ -13,21 +13,22 @@
 		@paginationFragment
 	}
 
-	@*<div class="row mb-2">
+	<div class="row mb-2">
 		@if (ShowFilter)
 		{
 			<div class="col-12">
 				<CascadingValue Name="Table" Value="@this">
-					<TableFilter TItem="TItem"
+					<DataGridFilter TItem="TItem"
 							 FilterableColumns="@FilterableColumns"
-							 FilterResultsCommand="FilterResultsChanged" />
+							 FilterResultsCommand=@(() => FilterData(null)) />
 				</CascadingValue>
 			</div>
 		}
-	</div>*@
+	</div>
 	<CommandBar>
 		@{
 			var selectedRows = SelectedRows?.Count() ?? 0;
+			var isEnabled = SelectedRow != null;
 		}
 		@if (Filterable)
 		{
@@ -36,7 +37,6 @@
 
 		@foreach (var item in RowCommandBarItems.Where(x => x.IsVisible == true))
 		{
-			bool isEnabled = selectedRows == 1;
 			<CommandBarItem Title="@item.Name"
 						IsEnabled="@isEnabled"
 						Id="@item.Id"
@@ -123,7 +123,7 @@
 							}}
 					</TableRow>
 				}
-				@if (Filterable)
+				@*@if (Filterable)
 				{
 					<TableRow Class="@FilterRowStyling?.Class" Style="@FilterRowStyling?.Style" Background="@(FilterRowStyling?.Background ?? Background.Default)" Color="@(FilterRowStyling?.Color ?? Color.Default)">
 						@foreach (var column in DisplayableColumns)
@@ -168,7 +168,7 @@
 							}
 						}
 					</TableRow>
-				}
+				}*@
 				@if (HasAggregates && !Virtualize && ShowAggregatesOnTop)
 				{
 					@aggregateRowFragment

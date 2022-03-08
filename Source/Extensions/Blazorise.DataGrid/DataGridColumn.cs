@@ -363,6 +363,11 @@ namespace Blazorise.DataGrid
         [Parameter] public bool Readonly { get; set; }
 
         /// <summary>
+        /// Gets or sets whether end-users are prevented from editing the column's filter cell values.
+        /// </summary>
+        [Parameter] public bool FilterReadonly { get; set; }
+
+        /// <summary>
         /// Gets or sets whether the column's caption is displayed within the column header.
         /// </summary>
         [Parameter] public bool ShowCaption { get; set; } = true;

@@ -1361,6 +1361,11 @@ namespace Blazorise.DataGrid
         /// Gets only columns that are available for editing.
         /// </summary>
         protected IEnumerable<DataGridColumn<TItem>> EditableColumns => Columns.Where( x => !x.ExcludeFromEdit && x.Editable );
+        
+        /// <summary>
+        /// Gets only columns that are available for filtering.
+        /// </summary>
+        protected IEnumerable<DataGridColumn<TItem>> FilterableColumns => Columns.Where( x => x.Filterable );
 
         /// <summary>
         /// Gets only columns that are available for display in the grid.

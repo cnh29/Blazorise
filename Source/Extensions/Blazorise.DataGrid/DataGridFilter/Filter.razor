@@ -1,0 +1,45 @@
+﻿@namespace Blazorise.DataGrid
+@inherits BaseComponent
+
+<div style="width: 240px; margin-left: 8px;">
+    @if (DataType == typeof(string))
+    {
+    <Select TValue="string" SelectedValue="DefaultValue" SelectedValueChanged="OperatorChanged">
+        <SelectItem TValue=string Value="@("eq")">Equals</SelectItem>
+        <SelectItem TValue=string Value="@("contains")">Contains</SelectItem>
+        <SelectItem TValue=string Value="@("startswith")">Starts With</SelectItem>
+        <SelectItem TValue=string Value="@("endswidth")">Ends With</SelectItem>
+    </Select>
+    }
+    else if (isNumber)
+    {
+        <Select TValue="string" SelectedValue="@DefaultValue" SelectedValueChanged="OperatorChanged">
+            <SelectItem TValue=string Value=@("eq")>=</SelectItem>
+            <SelectItem TValue=string Value=@("ne")>!=</SelectItem>
+            <SelectItem TValue=string Value=@("gt")>></SelectItem>
+            <SelectItem TValue=string Value=@("ge")>>=</SelectItem>
+            <SelectItem TValue=string Value=@("lt")>@("<")</SelectItem>
+            <SelectItem TValue=string Value=@("le")>@("<=")</SelectItem>
+        </Select>
+    }
+    else if (DataType.IsEnum)
+    {
+        <Select TValue="string" SelectedValue="@DefaultValue" SelectedValueChanged="OperatorChanged">
+            <SelectItem TValue=string Value="@("eq")">is</SelectItem>
+            <SelectItem TValue=string Value="@("ne")">is not</SelectItem>
+        </Select>
+    }
+    else if (isDate)
+    {
+        <Select TValue="string" SelectedValue="@DefaultValue" SelectedValueChanged="OperatorChanged">
+            <SelectItem TValue=string Value=@("eq")>=</SelectItem>
+            <SelectItem TValue=string Value=@("ne")>!=</SelectItem>
+            <SelectItem TValue=string Value=@("gt")>></SelectItem>
+            <SelectItem TValue=string Value=@("ge")>>=</SelectItem>
+            <SelectItem TValue=string Value=@("lt")>@("<")</SelectItem>
+            <SelectItem TValue=string Value=@("le")>@("<=")</SelectItem>
+        </Select>
+    }
+   
+</div>
+

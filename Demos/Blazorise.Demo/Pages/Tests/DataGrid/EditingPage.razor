@@ -1,4 +1,4 @@
-﻿@page "/tests/datagrid/editing/button-row"
+﻿@page "/tests/datagrid/editing/"
 <Row>
     <Column>
         <Card Margin="Margin.Is4.OnY">
@@ -23,6 +23,11 @@
                           Data="inMemoryData"
                           ShowPager
                           ShowPageSizes
+                          CommandbarItems=@(new List<object> { "New"})
+                          RowCommandBarItems=@(new List<CommandBarItemModel>() {
+                              new("Edit","Edit"),
+                              new("Delete","Delete")
+                          })
                           @bind-SelectedRow="@selectedEmployee"
                           Editable
                           EditMode="editMode"
@@ -77,12 +82,7 @@
                             </DisplayTemplate>
                         </DataGridCheckColumn>
                     </DataGridColumns>
-                    <ButtonRowTemplate>
-                        <Button Color="Color.Success" Clicked="@context.NewCommand.Clicked">@context.NewCommand.LocalizationString</Button>
-                        <Button Color="Color.Primary" Clicked="@context.EditCommand.Clicked" Disabled="@(selectedEmployee is null)">@context.EditCommand.LocalizationString</Button>
-                        <Button Color="Color.Danger" Clicked="@context.DeleteCommand.Clicked" Disabled="@(selectedEmployee is null)">@context.DeleteCommand.LocalizationString</Button>
-                        <Button Color="Color.Warning" Clicked="@context.ClearFilterCommand.Clicked">@context.ClearFilterCommand.LocalizationString</Button>
-                    </ButtonRowTemplate>
+                    
                 </DataGrid>
             </CardBody>
         </Card>
