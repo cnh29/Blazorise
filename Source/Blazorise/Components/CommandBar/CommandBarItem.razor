@@ -3,67 +3,43 @@
 
 <div class="d-flex m-2 commandbaritem">
 
-    @if (!string.IsNullOrEmpty(PrefixIcon))
-    {
-        <button type="submit" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
-            <span>
-                <i data-icon-name="@PrefixIcon" aria-hidden="true" class="@PrefixIcon" />
-
-                <span class="commandbaritem-title">@Title</span>
-            </span>
-        </button>
-    }
-    else
-    {
-        <button type="submit" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
-            <span>
-                @switch (Title)
-                {
-                    case "Add":
-                    case "New":
-                        <i class="fas fa-plus" aria-hidden="true" />
-                        break;
-                    case "Cancel":
-                        <i class="fas fa-times" aria-hidden="true" />
-                        break;
-                    case "Delete":
-                        <i class="fas fa-trash" aria-hidden="true" />
-                        break;
-                    case "Update":
-                        <i class="fas fa-save" aria-hidden="true" />
-                        break;
-                    case "Upload":
-                        <i class="fas fa-file-upload" aria-hidden="true" />
-                        break;
-                    case "Download":
-                        <i class="fas fa-file-download" aria-hidden="true" />
-                        break;
-                    case "Filter":
-                        <i class="fas fa-filter" aria-hidden="true" />
-                        break;
-                    case "View":
-                        <i class="bi-file-earmark-fill" aria-hidden="true" />
-                        break;
-                    case "CSV":
-                        <i class="bi-file-excel-fill" aria-hidden="true" />
-                        break;
-                    case "PDF":
-                        <i class="fas fa-file-pdf" aria-hidden="true" />
-                        break;
-                    case "Print":
-                        <i class="fas fa-print" aria-hidden="true" />
-                        break;
-                    case "Edit":
-                        <i class="fas fa-edit" aria-hidden="true" />
-                        break;
-                    default:
-
-                        break;
-                }
-                <span class="commandbaritem-title">@Title</span>
-            </span>
-        </button>
-    }
+	@if (!string.IsNullOrEmpty(PrefixIcon))
+	{
+		<button type="submit" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
+			<span>
+				<Icon Name="@PrefixIcon" />
+				<span class="commandbaritem-title">@Title</span>
+			</span>
+		</button>
+	}
+	else
+	{
+		<button type="submit" disabled="@(!IsEnabled)" @onclick="@(async () => await OnClick(Id))">
+			<span>
+				@{
+					object icon = Title switch 
+					{
+						"Add" => IconName.Add,
+						"New" => IconName.Add,
+						"Cancel" => IconName.Clear,
+						"Delete" => IconName.Delete,
+						"Update" => IconName.Save,
+						"Upload" => IconName.FileUpload,
+						"Download" => IconName.Download,
+						"Filter" => IconName.Filter,
+						"View" => IconName.Square,
+						"CSV" => IconName.LaptopCode,
+						"PDF" => IconName.FilePdf,
+						"Print" => IconName.Print,
+						"Edit" => IconName.Edit,
+						_ => Title
+					};
+				}
+				<Icon Name="@icon" />
+				<span class="commandbaritem-title">@Title</span>
+			</span>
+		</button>
+	}
 
 
 </div>

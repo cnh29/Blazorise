@@ -1,0 +1,17 @@
+﻿@namespace Blazorise
+@inherits BaseComponent
+
+<span class="status-span" style="background-color: @BackgroundColor; color: @ForegroundColor">
+    @ChildContent
+</span>
+
+@code {
+
+    #region Parameters
+
+	[Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string BackgroundColor { get; set; }
+    [Parameter] public string ForegroundColor { get; set; }
+
+    #endregion
+}

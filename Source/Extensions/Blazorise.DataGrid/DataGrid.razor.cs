@@ -302,7 +302,7 @@ namespace Blazorise.DataGrid
             else if ( id == "Delete" )
             {
                 var parameters = new Dictionary<string, object>();
-                dialogReference = DialogService.Show<DialogDelete>( parameters );
+                dialogReference = dialogService.Show<DialogDelete>( parameters );
 
                 var result = await dialogReference.Result;
 
@@ -2043,17 +2043,17 @@ namespace Blazorise.DataGrid
         /// <summary>
         /// If true, DataGrid will use validation when editing the fields.
         /// </summary>
-        [Parameter] public bool UseValidation { get; set; }
+        [Parameter] public bool UseValidation { get; set; } = true;
 
         /// <summary>
         /// If true, shows feedbacks for all validations.
         /// </summary>
-        [Parameter] public bool ShowValidationFeedback { get; set; } = false;
+        [Parameter] public bool ShowValidationFeedback { get; set; } = true;
 
         /// <summary>
         /// If true, shows summary for all validations.
         /// </summary>
-        [Parameter] public bool ShowValidationsSummary { get; set; } = true;
+        [Parameter] public bool ShowValidationsSummary { get; set; } = false;
 
         /// <summary>
         /// Label for validations summary.

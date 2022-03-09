@@ -1,8 +1,9 @@
-﻿@using Blazorise
-@namespace Blazorise
+﻿@namespace Blazorise
+@inherits BaseComponent
 
-<Modal>
-    <ModalHeader>
+<Modal Visible=true>
+    <ModalContent Centered>
+        <ModalHeader>
             <ModalTitle>Delete</ModalTitle>
             <CloseButton />
      </ModalHeader>
@@ -22,9 +23,12 @@
             <Button Color="Color.Secondary" Clicked="@Cancelled">Cancel</Button>
             <Button Color="Color.Primary" Clicked="@Close">Ok</Button>
         </ModalFooter>
+    </ModalContent>
+    
 </Modal>
 
 @code {
+    private Modal modalRef;
     [CascadingParameter] public DialogInstance Parent { get; set; }
     [Parameter] public string Description { get; set; } = "Are you sure you want to Delete?";
 

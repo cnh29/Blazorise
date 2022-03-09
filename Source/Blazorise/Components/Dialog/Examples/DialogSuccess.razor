@@ -1,38 +1,41 @@
-﻿@using Blazorise
-@namespace Blazorise
+﻿@namespace Blazorise
+@inherits BaseComponent
 
-<Modal>
-    <ModalHeader>
-            <ModalTitle>Delete</ModalTitle>
-            <CloseButton />
-     </ModalHeader>
-    <ModalBody>
-       <div class="text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" style="color: #4BB543" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                    </svg>
+<Modal Visible=true>
+	<ModalContent Centered>
+		<ModalHeader>
+			<ModalTitle>Delete</ModalTitle>
+			<CloseButton />
+		</ModalHeader>
+		<ModalBody>
+			<div class="text-center">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" style="color: #4BB543" viewBox="0 0 16 16">
+					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+				</svg>
 
 
-                    <h4 class="mb-2 mt-2">@Message</h4>
-                </div>
-    </ModalBody>
-    <ModalFooter>
-            <Button Color="Color.Primary" Clicked="@Close">Ok</Button>
-        </ModalFooter>
+				<h4 class="mb-2 mt-2">@Message</h4>
+			</div>
+		</ModalBody>
+		<ModalFooter>
+			<Button Color="Color.Primary" Clicked="@Close">Ok</Button>
+		</ModalFooter>
+	</ModalContent>
+
 </Modal>
 
 @code {
-    [CascadingParameter] public DialogInstance Parent { get; set; }
-    [Parameter] public string Message { get; set; }
+	[CascadingParameter] public DialogInstance Parent { get; set; }
+	[Parameter] public string Message { get; set; }
 
-    void Close()
-    {
-        Parent.Close();
-    }
+	void Close()
+	{
+		Parent.Close();
+	}
 
-    void Cancelled()
-    {
-        Parent.Close(DialogResult.Cancel());
-    }
+	void Cancelled()
+	{
+		Parent.Close(DialogResult.Cancel());
+	}
 }
 

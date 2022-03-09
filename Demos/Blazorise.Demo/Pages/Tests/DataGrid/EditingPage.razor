@@ -30,8 +30,7 @@
                           })
                           @bind-SelectedRow="@selectedEmployee"
                           Editable
-                          EditMode="editMode"
-                          CommandMode="DataGridCommandMode.ButtonRow">
+                          EditMode="editMode">
                     <DataGridColumns>
                         <DataGridCommandColumn TItem="Employee" NewCommandAllowed="false" EditCommandAllowed="false" DeleteCommandAllowed="false"  >
                             <SaveCommandTemplate>
@@ -61,7 +60,7 @@
 
                                     @if ( gender == "M" )
                                     {
-                                        @("Male")
+                                        <SpanDisplay BackgroundColor="#f3232df" ForegroundColor="#fff">Male</SpanDisplay>
                                     }
                                     else if ( gender == "F" )
                                     {

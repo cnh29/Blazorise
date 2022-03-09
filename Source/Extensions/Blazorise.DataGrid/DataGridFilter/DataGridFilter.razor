@@ -3,48 +3,50 @@
 @typeparam TItem
 
 <div class="m-2">
-    <h6>Filter By</h6>
+	<h6>Filter By</h6>
 
-    <ul class="list-unstyled mt-1 mb-2">
-        
-        @foreach (var column in FilterableColumns.Where(x=> x.Filter.IsVisible == true).OrderBy(x => x.Filter.lastFilteredDate))
-        {
-            <li style="max-width: 340px">
-                
-                <DataGridFilterItem TItem="TItem"
-                              DidClickRemove="@(() => DidRemoveFilterItem(column))"
-                              OnFocusOut="FilterResultsCommand"
-                              Column="@column"
-                              OnChange="FilterResultsCommand"
-                              OnInputEnter="@(async (KeyboardEventArgs args) => await OnFilterItemEnter(args))" />
-            </li>
-        }
-    </ul>
+	<ul class="list-unstyled mt-1 mb-2">
 
+		@foreach (var column in FilterableColumns.Where(x => x.Filter.IsVisible == true).OrderBy(x => x.Filter.lastFilteredDate))
+		{
+			<li style="max-width: 340px">
 
-    <Button Class="icon-button mb-2 mt-2" @onclick="OnAddFilterClicked">
-        <i class="oi oi-plus"> Filter...</i>
-    </Button>
-    @if (ShowFilterInput)
-    {
-        <Select TValue=string Style="max-width:350px" SelectedValueChanged=OnFilterValueChanged @onfocusout="ClickOutsideFocus">
-            <SelectItem TValue=string Value="null">--Please Select--</SelectItem>
-            @foreach (var item in FilterableColumns)
-            {
-                <SelectItem TValue=string Value="@item.ElementId">@(item.Caption)</SelectItem>
-            }
+				<DataGridFilterItem TItem="TItem"
+								DidClickRemove="@(() => DidRemoveFilterItem(column))"
+								OnFocusOut="FilterResultsCommand"
+								Column="@column"
+								OnChange="FilterResultsCommand"
+								OnInputEnter="@(async (KeyboardEventArgs args) => await OnFilterItemEnter(args))" />
+			</li>
+		}
+	</ul>
 
-        </Select>
-    }
+	
+		<Button Class="clear-btn mb-2 mt-2 d-block" @onclick="OnAddFilterClicked">
+			<i class="fas fa-plus"> Filter...</i>
+		</Button>
+		@if (ShowFilterInput)
+		{
+			<Select TValue=string Style="max-width:350px; display:block;" SelectedValueChanged=OnFilterValueChanged @onfocusout="ClickOutsideFocus">
+				<SelectItem TValue=string Value="null">--Please Select--</SelectItem>
+				@foreach (var item in FilterableColumns)
+			{
+				<SelectItem TValue=string Value="@item.ElementId">@(item.Caption)</SelectItem>
+			}
+
+		</Select>
+		}
+	
+
 </div>
 
 @{
-    <style>
-        .icon-button {
-            background-color: transparent;
-            border: none; /* Remove borders */
-            padding: 4px;
-        }
-    </style>
+	<style>
+		.icon-button {
+			background-color: transparent;
+			border: none; /* Remove borders */
+			padding: 4px;
+		}
+	</style>
 }
 

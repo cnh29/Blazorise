@@ -1,8 +1,9 @@
-﻿@using Blazorise
-@namespace Blazorise
+﻿@namespace Blazorise
+@inherits BaseComponent
 
-<Modal>
-    <ModalHeader>
+<Modal Visible=true>
+    <ModalContent Centered>
+        <ModalHeader>
             <ModalTitle>Delete</ModalTitle>
             <CloseButton />
      </ModalHeader>
@@ -22,6 +23,8 @@
     <ModalFooter>
             <Button Color="Color.Primary" Clicked="@Close">Ok</Button>
         </ModalFooter>
+    </ModalContent>
+    
 </Modal>
 
 @code {
