@@ -2,14 +2,14 @@
 @inherits BaseComponent
 @typeparam TItem
 
-<div class="m-2">
+<div class="m-2" style="max-width: 340px">
 	<h6>Filter By</h6>
 
 	<ul class="list-unstyled mt-1 mb-2">
 
 		@foreach (var column in FilterableColumns.Where(x => x.Filter.IsVisible == true).OrderBy(x => x.Filter.lastFilteredDate))
 		{
-			<li style="max-width: 340px">
+			<li>
 
 				<DataGridFilterItem TItem="TItem"
 								DidClickRemove="@(() => DidRemoveFilterItem(column))"
